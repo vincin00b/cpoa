@@ -1,0 +1,93 @@
+@startuml
+
+' definitions
+' -----------
+
+' package "controller"
+class Application
+' end package
+
+' package "model"
+class ProjectList
+class Project
+class Task
+' end package
+
+' package "model.command"
+class CommandHelp
+class CommandUncheck
+class CommandAddTask
+class FactoryCommand
+abstract Command
+class CommandAddProject
+class CommandShow
+class Factory
+class CommandCheck
+' end package
+
+' content
+' -------
+
+' FactoryCommand:
+FactoryCommand : Command createCommand(String)
+
+' CommandUncheck:
+Command <|-- CommandUncheck
+CommandUncheck : void execute()
+
+' CommandAddTask:
+Command <|-- CommandAddTask
+CommandAddTask : void execute()
+
+' Application:
+Application : void main(String)
+
+' Task:
+Task : int tCount
+Task : int getId()
+Task : void setId(int)
+Task : String getDescription()
+Task : void setDescription(String)
+Task : boolean isDone()
+Task : void setDone(boolean)
+
+' CommandHelp:
+Command <|-- CommandHelp
+CommandHelp : void execute()
+
+' Command:
+Command : void execute()
+
+' CommandCheck:
+Command <|-- CommandCheck
+CommandCheck : void execute()
+
+' ProjectList:
+ProjectList --> "1" ProjectList
+ProjectList : ProjectList getInstance()
+ProjectList : List getlProject()
+ProjectList : void setlProject(List)
+ProjectList : void addP(Project)
+ProjectList : String toString()
+
+' CommandShow:
+Command <|-- CommandShow
+CommandShow : void execute()
+
+' Factory:
+Factory --> "1" FactoryCommand
+Factory : Command execCommand(String)
+
+' CommandAddProject:
+Command <|-- CommandAddProject
+CommandAddProject : void execute()
+
+' Project:
+Project : int getId()
+Project : void setId(int)
+Project : String getpName()
+Project : void setpName(String)
+Project : ArrayList getaLTask()
+Project : void setaLTask(ArrayList)
+
+@enduml
