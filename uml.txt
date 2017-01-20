@@ -16,6 +16,7 @@ class Task
 ' package "model.command"
 class CommandHelp
 class CommandUncheck
+class CommandDelete
 class CommandAddTask
 class FactoryCommand
 abstract Command
@@ -28,19 +29,34 @@ class CommandCheck
 ' content
 ' -------
 
-' FactoryCommand:
-FactoryCommand : Command createCommand(String)
+' ProjectList:
+ProjectList --> "1" ProjectList
+ProjectList --> Project
+ProjectList : List lProject
+ProjectList : ProjectList getInstance()
+ProjectList : List getlProject()
+ProjectList : void setlProject(List)
+ProjectList : void addP(Project)
+ProjectList : String toString()
 
 ' CommandUncheck:
 Command <|-- CommandUncheck
 CommandUncheck : void execute()
 
-' CommandAddTask:
-Command <|-- CommandAddTask
-CommandAddTask : void execute()
+' CommandAddProject:
+Command <|-- CommandAddProject
+CommandAddProject : void execute()
+
+' Factory:
+Factory --> "1" FactoryCommand
+Factory : Command execCommand(String)
 
 ' Application:
 Application : void main(String)
+
+' CommandShow:
+Command <|-- CommandShow
+CommandShow : void execute()
 
 ' Task:
 Task : int tCount
@@ -55,6 +71,19 @@ Task : void setDone(boolean)
 Command <|-- CommandHelp
 CommandHelp : void execute()
 
+' Project:
+Project --> Task
+Project : int getId()
+Project : void setId(int)
+Project : String getpName()
+Project : void setpName(String)
+Project : ArrayList getaLTask()
+Project : void setaLTask(ArrayList)
+
+' CommandDelete:
+Command <|-- CommandDelete
+CommandDelete : void execute()
+
 ' Command:
 Command : void execute()
 
@@ -62,32 +91,12 @@ Command : void execute()
 Command <|-- CommandCheck
 CommandCheck : void execute()
 
-' ProjectList:
-ProjectList --> "1" ProjectList
-ProjectList : ProjectList getInstance()
-ProjectList : List getlProject()
-ProjectList : void setlProject(List)
-ProjectList : void addP(Project)
-ProjectList : String toString()
+' CommandAddTask:
+Command <|-- CommandAddTask
+CommandAddTask : void execute()
 
-' CommandShow:
-Command <|-- CommandShow
-CommandShow : void execute()
-
-' Factory:
-Factory --> "1" FactoryCommand
-Factory : Command execCommand(String)
-
-' CommandAddProject:
-Command <|-- CommandAddProject
-CommandAddProject : void execute()
-
-' Project:
-Project : int getId()
-Project : void setId(int)
-Project : String getpName()
-Project : void setpName(String)
-Project : ArrayList getaLTask()
-Project : void setaLTask(ArrayList)
+' FactoryCommand:
+FactoryCommand --> Command
+FactoryCommand : Command createCommand(String)
 
 @enduml

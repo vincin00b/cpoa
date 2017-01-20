@@ -28,6 +28,9 @@ public class FactoryCommand {
 		case "uncheck":
 			command = new CommandUncheck(tabCommandLine[1]);
 			break;
+		case "delete":
+			command = new CommandDelete(tabCommandLine[1]);
+			break;
 		case "quit":
 			System.exit(0);
 		default:
