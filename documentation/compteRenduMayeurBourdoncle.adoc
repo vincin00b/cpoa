@@ -8,17 +8,18 @@ Vincent Bourdoncle <vincent.bourdoncle@etu.univ-tlse2.fr>; Yannick Mayeur <yanni
 :icons: font
 
 == Introduction
-
+L'objectif de projet est la mise en pratique des nombreuses bonnes pratiques objets vu en cours, avec
+aussi le développement de nos compétences de travail en équipe. 
 
 <<<
 
 == Conception orienté objet
-NOTE: Le java étant un language orienté objet nous avons, pour le refactoring naturellement
+NOTE: Le java étant un language orienté objet, nous avons pour le refactoring naturellement
 utilisé une approche objet. Cette approche permet entre autre une maintenance plus facile du
 code, mais surtout la grande facilitation d'ajout de nouvelle fonctionnalité.
 
 Nous avons fais le choix de créer plusieurs nouvelles classes. +
-Une classe Application d'on le seul but est de créer la liste de projet et de recevoir
+Une classe Application dont le seul but est de créer la liste de projet et de recevoir
 les entrées claviers. +
 Plusieurs classes modèle. Une pour les tâches, les projets et une pour la liste de projet.
 Nous avons fait l'hypothèse qu'il n'existe qu'une seule liste de project, et avons donc
@@ -27,9 +28,9 @@ implémenté le design pattern _Singleton_.
 image::model.png[]
 
 Parmi les classes modèles nous avons également les
-commandes. Pour gérer celle-ci nous avons implémenter le design patten _Factory_. Ainsi
-quand l'application lit l'entrée clavier la factory crée une nouvelle Commande qui aura sa
-méthode exécution propre.
+commandes. Pour gérer celles-ci nous avons implémenté le design pattern _Factory_. Ainsi
+quand l'application lit l'entrée clavier, la factory crée une nouvelle Commande qui aura sa
+méthode d'exécution propre.
 
 image::factory.png[]
 
@@ -38,8 +39,8 @@ image::factory.png[]
 == Ajout de fonctionnalité
 
 === Fonctionnalité de supression
-Du fait que nous avons une _Factory_ pour les commandes en rajouter une nouvelle est très
-simple, nous avons donc pu en rajoutant seulement une classe héritant de commande créer cette
+Du fait que nous avons une _Factory_ pour les commandes, rajouter une nouvelle commande est très
+simple, nous avons donc pu, en rajoutant seulement une classe héritant de commande, créer cette
 nouvelle fonctionnalité. +
 Pour supprimer une tâche il faut utiliser la commande :
 [source]
