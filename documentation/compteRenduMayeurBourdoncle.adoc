@@ -1,42 +1,56 @@
-= Compte rendu : Project de CPOA
+= Compte rendu : Projet de CPOA
 Vincent Bourdoncle <vincent.bourdoncle@etu.univ-tlse2.fr>; Yannick Mayeur <yannick.mayeur@etu.univ-tlse2.fr>
 :toc: left
 :toc-title: Sommaire
 :numbered:
 :source-highlighter: pygments
 :imagesdir: assets/images
+:icons: font
 
 == Introduction
 
 
+<<<
+
 == Conception orienté objet
-Le java étant un language orienté objet nous avons pour le refactoring naturellement utilisé
-une approche objet. Cette approche permet entre autre une maintenance plus facile du code, mais
-surtout la grande facilitation d'ajout de nouvelle fonctionnalité.
+NOTE: Le java étant un language orienté objet nous avons, pour le refactoring naturellement
+utilisé une approche objet. Cette approche permet entre autre une maintenance plus facile du
+code, mais surtout la grande facilitation d'ajout de nouvelle fonctionnalité.
 
-Voici le diagramme de classe générer par plantUML après refactoring :
-
-image::uml.png[]
-
-Nous avons fais le choix de creer plusieurs nouvel classe. +
+Nous avons fais le choix de créer plusieurs nouvelles classes. +
 Une classe Application d'on le seul but est de créer la liste de projet et de recevoir
 les entrées claviers. +
 Plusieurs classes modèle. Une pour les tâches, les projets et une pour la liste de projet.
 Nous avons fait l'hypothèse qu'il n'existe qu'une seule liste de project, et avons donc
-implémenter le design pattern _Singleton_. Parmi les classes modèles nous avons également les
+implémenté le design pattern _Singleton_.
+
+image::model.png[]
+
+Parmi les classes modèles nous avons également les
 commandes. Pour gérer celle-ci nous avons implémenter le design patten _Factory_. Ainsi
-quand l'application lit l'entrée clavier la factory crée un nouvelle Commande qui aura son
-éxécution.
+quand l'application lit l'entrée clavier la factory crée une nouvelle Commande qui aura sa
+méthode exécution propre.
+
+image::factory.png[]
+
+'''
 
 == Ajout de fonctionnalité
 
 === Fonctionnalité de supression
 Du fait que nous avons une _Factory_ pour les commandes en rajouter une nouvelle est très
 simple, nous avons donc pu en rajoutant seulement une classe héritant de commande créer cette
-nouvelle fonctionnalité.
+nouvelle fonctionnalité. +
+Pour supprimer une tâche il faut utiliser la commande :
+[source]
+----
+delete <id de tâche>
+----
+
+<<<
 
 == Conclusion
 Le refactoring de cette application aura était une éxperience très enrichissante. D'une part
 nous avons pu voir l'intérêt de respecter les bonnes pratiques objets, avec un ajout de
 fonctionnalités bien plus simple. Et d'autres parts nous avons pu mettre en oeuvre certaine
-de nos nouvelles connaissances acquiéri au cours des cours de CPOA.
+de nos nouvelles connaissances acquéri au cours des cours de CPOA.
