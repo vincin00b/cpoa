@@ -8,7 +8,7 @@ Vincent Bourdoncle <vincent.bourdoncle@etu.univ-tlse2.fr>; Yannick Mayeur <yanni
 :icons: font
 
 == Introduction
-L'objectif de projet est la mise en pratique des nombreuses bonnes pratiques objets vu en cours, avec
+L'objectif de projet est la mise en pratique des nombreuses bonnes pratiques objets vues en cours et en TP, avec
 aussi le développement de nos compétences de travail en équipe. 
 
 <<<
